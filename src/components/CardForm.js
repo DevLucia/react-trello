@@ -11,7 +11,16 @@ class CardForm extends Component {
   }
 
   handleChange = (event) => {
-    this.setState({[event.target.name]: event.target.value})
+    const {name, value, files} = event.target;
+    
+    this.setState({
+      card: {
+        ...this.state.card,
+        // en caso de que sea un campo normal coge el value, si es un fichero, como files
+        // es un array de ficheros cogemos el 0
+        [name]: files && files[0] ? files[0] : value
+      }
+    })
   }
 
   handleSubmit= (event) => {
@@ -42,11 +51,11 @@ class CardForm extends Component {
                 value={this.state.label} onChange={this.handleChange}/>
                 {/* <small id="emailHelp" className="form-text text-muted">validations</small> */}
               </div>
-              <div className="form-group">
+              <div className="custom-file">
                 <label htmlFor="exampleInputEmail1">Image</label>
-                <input type="text" className="form-control" placeholder="image" name="imageUrl"
-                value={this.state.imageUrl} onChange={this.handleChange}/>
-                {/* <small id="emailHelp" className="form-text text-muted">validations</small> */}
+                <input type="file" className="custom-file-input" placeholder="file" name="image"
+                onChange={this.handleChange}/>
+                {this.state.attachment && <img src={URL.createObjectURL(this.state.card.attachment)} alt="preview"/>}
               </div>
               <div className="form-group">
                 <label htmlFor="exampleInputEmail1">Description</label>
