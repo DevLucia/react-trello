@@ -3,7 +3,7 @@ import service from '../services/TrelloService'
 
 
 
-class ColumnForm extends Component {
+class ColumnForm extends Component{
 
   state={
     title:""
@@ -21,12 +21,12 @@ class ColumnForm extends Component {
 
 
 
-  render() {
+  render(){
     return(
       <form onSubmit={this.handleSubmit}>
         <div className="col-4">
-        <div class="card" style={{width: "18rem"}}>
-          <div class="card-body">
+        <div className="card" style={{width: "18rem"}}>
+          <div className="card-body">
             <div className="form-group">
               <label htmlFor="exampleInputEmail1">Column title</label>
               <input type="text" className="form-control" placeholder="title" 
@@ -36,11 +36,8 @@ class ColumnForm extends Component {
             <button type="submit" className="btn btn-primary">Submit</button>
           </div>
         </div>
-      </div>
-
-
-
-</form >
+      </div>  
+    </form >
     )
   }
 }

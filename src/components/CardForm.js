@@ -7,7 +7,7 @@ class CardForm extends Component {
     title:"",
     description: '',
     label: '',
-    imageUrl: ''
+    image: ''
   }
 
   handleChange = (event) => {
@@ -18,7 +18,7 @@ class CardForm extends Component {
         ...this.state.card,
         // en caso de que sea un campo normal coge el value, si es un fichero, como files
         // es un array de ficheros cogemos el 0
-        [name]: files && files[0] ? files[0] : value
+        [name]: (files && files[0]) ? files[0] : value
       }
     })
   }
